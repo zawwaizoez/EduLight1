@@ -27,4 +27,5 @@
     <color name="colorGmailBackground">#4b5b5b</color>
     <color name="colorSelectionLoginBtnText">#585757</color>
     <color name="colorBlackDark">#393939</color>
+    <color name="colorTabSelected">#BDBDBD</color>
 </resources>

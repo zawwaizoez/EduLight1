@@ -86,29 +86,29 @@
                 android:layout_marginRight="@dimen/login_input_layout_margin"
                 android:layout_marginTop="50dp"
                 >
-
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/colorPrimary"
+                    app:hintAnimationEnabled="true"
                     android:theme="@style/AppTheme.FloatingLabelApperance"
-                    app:hintAnimationEnabled="true">
-
+                    >
                     <EditText
                         android:id="@+id/default_signup_gmail_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorTransperant"
-                        android:drawableLeft="@drawable/ic_input_username"
-                        android:drawablePadding="10dp"
-                        android:ems="10"
-                        android:fontFamily="sans-serif"
                         android:hint="@string/input_user_email_address"
                         android:inputType="textEmailAddress"
-                        android:padding="10dp"
                         android:textColor="@color/colorPrimary"
                         android:textColorHint="@color/colorPrimary"
-                        android:textSize="18sp" />
+                        android:fontFamily="sans-serif"
+                        android:textSize="18sp"
+                        android:ems="10"
+                        android:background="@color/colorTransperant"
+                        android:padding="10dp"
+                        android:drawableLeft="@drawable/ic_input_username"
+                        android:drawablePadding="10dp"
+                        />
                 </android.support.design.widget.TextInputLayout>
                 <View
                     android:layout_width="match_parent"

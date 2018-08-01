@@ -35,6 +35,8 @@
             android:layout_height="?attr/actionBarSize"
             app:tabMode="fixed"
             app:tabGravity="fill"
+            app:tabBackground="@drawable/tab_ripple_on_touch"
+            app:tabIndicatorHeight="1.5dp"
             app:tabIndicatorColor="@color/colorPrimary"
             android:background="@color/colorWhite"
             />

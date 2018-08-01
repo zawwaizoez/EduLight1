@@ -5,20 +5,13 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Type;
 
 public class SelectionLogin extends AppCompatActivity implements View.OnClickListener {
     private Typeface boldFont,normalFont,thinFont;
@@ -56,7 +49,7 @@ public class SelectionLogin extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch(view.getId())
         {
-            case R.id.user_facebook_loginBtn:
+            case R.id.user_facebook_signupBtn:
                 break;
             case R.id.user_google_signupBtn:
                 break;

@@ -25,9 +25,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="EduLignt"
+                android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/selection_text_one"
@@ -77,7 +77,7 @@
                 android:id="@+id/user_facebook_signupBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign up with Google"
+                android:text="Sign up with Faceboook"
                 android:inputType="textCapWords"
                 android:textSize="16dp"
                 android:drawablePadding="5dp"
@@ -125,14 +125,14 @@
                     android:textColor="@android:color/darker_gray"
                     android:text="Already have an account?"
                     />
-
                 <TextView
                     android:id="@+id/selection_text_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Sign in"
+                    android:textSize="16sp"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
+                    android:text=" Sign in"
+                    />
 
             </LinearLayout>
         </LinearLayout>

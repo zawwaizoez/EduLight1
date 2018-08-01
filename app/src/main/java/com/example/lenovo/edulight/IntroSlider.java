@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class IntroSlider extends AppCompatActivity {
 
@@ -101,7 +99,7 @@ public class IntroSlider extends AppCompatActivity {
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new ImageView(this);
             dots[i].setImageDrawable(getResources().getDrawable(R.drawable.inactive_dots_indicator));
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(10,0,10,0);
             dotsLayout.addView(dots[i],params);
         }

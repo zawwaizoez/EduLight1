@@ -1,10 +1,10 @@
 package com.example.lenovo.edulight;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,37 +12,27 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar main_content_toolbar;
-    private static final String SHOWCASE_ID = "sequence example";
     private TabLayout main_tab_layout;
     private ViewPager main_fragment_viewPager;
-    private LayoutInflater inflater;
     private TextView main_layout_toolbar_title;
-    private View uploadActionButtonContainer;
-    private FloatingActionButton uploadActionBtn;
-    private TextView tabOne,tabTwo,tabThree,tabFour;
+    private FloatingActionButton user_upload_post_btn;
+    private Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpLayout();
-
     }
+
 
     private void setUpLayout() {
         main_content_toolbar = (Toolbar) findViewById(R.id.main_content_toolbar);
@@ -55,13 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         main_fragment_viewPager = (ViewPager) findViewById(R.id.main_content_fragment_ViewPager);
         setupViewPager(main_fragment_viewPager);
-        /*teacherUpload teacher = new teacherUpload();
-        View view = teacher.getView();
-        if(view!=null)
-        {
-            uploadActionBtn = (FloatingActionButton)view.findViewById(R.id.user_upload_new_postBtn);
-
-        }*/
 
         main_tab_layout = (TabLayout) findViewById(R.id.main_content_tab_layout);
         main_tab_layout.setupWithViewPager(main_fragment_viewPager);
@@ -71,17 +54,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addMainLayoutTabIcons() {
-        int icons[] = {
-                R.drawable.ic_newfeed_icon_24dp,
-                R.drawable.ic_category_icon_24dp,
-                R.drawable.ic_forum_icon_24dp,
-                R.drawable.ic_profile_logo_24dp
+        int icons[] = new int[]{
+                R.drawable.ic_newfeed_logo_svg_24dp,
+                R.drawable.ic_category_logo_svg_24dp,
+                R.drawable.ic_forum_logo_svg_24dp,
+                R.drawable.ic_user_profile_logo_svg_24dp
 
         };
         main_tab_layout.getTabAt(0).setIcon(icons[0]);
         main_tab_layout.getTabAt(1).setIcon(icons[1]);
         main_tab_layout.getTabAt(2).setIcon(icons[2]);
         main_tab_layout.getTabAt(3).setIcon(icons[3]);
+        main_tab_layout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        main_tab_layout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.colorTabSelected), PorterDuff.Mode.SRC_IN);
+        main_tab_layout.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.colorTabSelected), PorterDuff.Mode.SRC_IN);
+        main_tab_layout.getTabAt(3).getIcon().setColorFilter(getResources().getColor(R.color.colorTabSelected), PorterDuff.Mode.SRC_IN);
+        main_tab_layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(getResources().getColor(R.color.colorTabSelected), PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     public static void applyFontForMainToolbar(Activity context) {
