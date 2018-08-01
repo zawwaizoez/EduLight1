@@ -2,6 +2,7 @@ package com.example.lenovo.edulight;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -22,9 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class PostUploadActivity extends AppCompatActivity {
@@ -39,15 +40,10 @@ public class PostUploadActivity extends AppCompatActivity {
     int postId =1;
     //for firebase
     private DatabaseReference mDatabase;
-    private StorageReference mImageStorage;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_upload);
-
-        //firebase
-        mImageStorage = FirebaseStorage.getInstance().getReference();
-
         boldFont = Typeface.createFromAsset(getAssets(), "oxygen.bold.ttf");
         thinFont = Typeface.createFromAsset(getAssets(),"oxygen.light.ttf");
         normalFont = Typeface.createFromAsset(getAssets(),"oxygen.regular.ttf");
@@ -62,22 +58,11 @@ public class PostUploadActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               /* Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                intent.setType("images*//*");
-                startActivityForResult(intent,RESULT_LOAD_IMAGE);*/
-              String title =  activity_upload_user_post_title.getText().toString();
-             String description=   activity_upload_user_post_decription.getText().toString();
+               Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+               intent.addCategory(Intent.CATEGORY_OPENABLE);
+               intent.setType("images/*");
+               startActivityForResult(Intent.createChooser(intent,"Select Picture"),RESULT_LOAD_IMAGE);
 
-                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-                String userId = user2.getUid();
-
-                mDatabase =FirebaseDatabase.getInstance().getReference().child("Users").child(userId).child("POST"+postId );
-                HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put("Title",title );
-                hashMap.put("Description",description);
-                hashMap.put("image","link_one");
-                mDatabase.setValue(hashMap);
-                postId++;
             }
         });
     }
@@ -85,18 +70,17 @@ public class PostUploadActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data)
+        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data!=null)
         {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {
-                    MediaStore.Images.Media.DATA
-            };
-            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn,null,null,null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String pitcurePath = cursor.getString(columnIndex);
-            activity_upload_user_post_image = (ImageView)findViewById(R.id.activity_upload_user_post_image);
-            activity_upload_user_post_image.setImageBitmap(BitmapFactory.decodeFile(pitcurePath));
+            Uri uri = data.getData();
+            try{
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                activity_upload_user_post_image.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -119,7 +103,19 @@ public class PostUploadActivity extends AppCompatActivity {
         activity_upload_toolbar_post_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String title =  activity_upload_user_post_title.getText().toString();
+                String description=   activity_upload_user_post_decription.getText().toString();
 
+                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                String userId = user2.getUid();
+
+                mDatabase =FirebaseDatabase.getInstance().getReference().child("Users").child(userId).child("POST"+postId );
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put("Title",title );
+                hashMap.put("Description",description);
+                hashMap.put("image","link_one");
+                mDatabase.setValue(hashMap);
+                postId++;
             }
         });
         activity_upload_toolbar_post_btn.setTypeface(normalFont);
