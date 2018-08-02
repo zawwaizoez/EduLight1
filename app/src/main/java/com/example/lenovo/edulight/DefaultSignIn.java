@@ -1,5 +1,6 @@
 package com.example.lenovo.edulight;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -34,13 +35,13 @@ public class DefaultSignIn extends AppCompatActivity implements View.OnFocusChan
     private Toolbar default_sign_in_toolbar;
     private Button default_login_confirm_btn;
     private CheckBox default_login_remember_check;
-
+    private ProgressDialog mProgress;
     //for firebase
     private FirebaseAuth mAuth;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default_signin);
-
+        mProgress =new ProgressDialog(this);
         //for firebase
         mAuth = FirebaseAuth.getInstance();
 
@@ -71,8 +72,18 @@ public class DefaultSignIn extends AppCompatActivity implements View.OnFocusChan
                             //Log.d(TAG, "signInWithEmail:success");
                             //FirebaseUser user = mAuth.getCurrentUser();
                            // updateUI(user);
-                            Toast.makeText(DefaultSignIn.this, "Authentication success.",
-                                    Toast.LENGTH_SHORT).show();
+
+                            mProgress.setTitle("Logging User");
+                            mProgress.setMessage("Please wait a moment");
+                            mProgress.setCanceledOnTouchOutside(false);
+                            mProgress.show();
+                           /* Toast.makeText(DefaultSignIn.this, "Authentication success.",
+                                    Toast.LENGTH_SHORT).show();*/
+
+                           Intent intent = new Intent(DefaultSignIn.this,MainActivity.class);
+                           startActivity(intent);
+                           finish();
+
                         } else {
                             // If sign in fails, display a message to the user.
                           //  Log.w(TAG, "signInWithEmail:failure", task.getException());
