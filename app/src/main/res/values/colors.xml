@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#20abd2</color>
+    <color name="colorPrimaryDark">#20a0d2</color>
+    <color name="startColor">#20abd2</color>
+    <color name="endColor">#2094d2</color>
+    <color name="colorAccent">#20a0d2</color>
+    <color name="colorTransperant">#00000000</color>
+    <color name="bg_screen1">#20abd2</color>
+    <color name="bg_screen2">#20abd2</color>
+    <color name="bg_screen3">#20abd2</color>
+    <color name="bg_screen4">#20abd2</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="postUploadTextColor">#eeffffff</color>
+    <color name="colorDarkWhite">#52d2cece</color>
+    <color name="colorDarkGray">#52a9a6a6</color>
+    <color name="colorGray">#f7f5f5</color>
+    <color name="colorTransperentDark">#16f9eaea</color>
+    <color name="colorTransperentGray">#16f7f5f5</color>
+    <color name="colorImageUpload">#20d220</color>
+    <color name="colorCommentPermit">#ffbf00</color>
+    <color name="colorCaptureImage">#4b5b5b</color>
+    <color name="colorHyperLink">#e97228</color>
+    <color name="colorTransperantWhite">#77faf5f5</color>
+    <color name="colorGoogleBackground">#db3236</color>
+    <color name="colorFacebookBackground">#3B5998</color>
+    <color name="colorGmailBackground">#4b5b5b</color>
+    <color name="colorSelectionLoginBtnText">#585757</color>
+    <color name="colorBlackDark">#393939</color>
+</resources>

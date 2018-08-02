@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen4"
+    >
+    <ImageView
+        android:id="@+id/slider_image"
+        android:layout_width="@dimen/slider_image_size"
+        android:layout_height="@dimen/slider_image_size"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@id/slider_dots_layout"
+        android:src="@drawable/discussion_forum"
+        />
+    <LinearLayout
+        android:id="@+id/slider_dots_layout"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent"
+        android:layout_height="@dimen/slider_dots_layout_height"/>
+    <TextView
+        android:id="@+id/slider_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fourth_slide_title"
+        android:layout_below="@id/slider_dots_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/slide_text_marginTop"
+        android:layout_marginLeft="@dimen/slide_title_margin"
+        android:layout_marginRight="@dimen/slide_title_margin"
+        android:textAlignment="center"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        />
+    <TextView
+        android:id="@+id/slider_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/slider_title"
+        android:layout_centerHorizontal="true"
+        android:text="@string/fourth_slide_content"
+        android:layout_marginTop="@dimen/slide_text_marginTop"
+        android:layout_marginRight="@dimen/slide_title_margin"
+        android:layout_marginLeft="@dimen/slide_title_margin"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        />
+
+</RelativeLayout>

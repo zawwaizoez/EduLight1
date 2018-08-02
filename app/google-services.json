@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "299703011104",
+    "firebase_url": "https://edulight-8e70a.firebaseio.com",
+    "project_id": "edulight-8e70a",
+    "storage_bucket": "edulight-8e70a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299703011104:android:a83c5a6f4fe14435",
+        "android_client_info": {
+          "package_name": "com.example.lenovo.edulight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299703011104-84v5glihd6uhokholf81t6iqenleluv3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lenovo.edulight",
+            "certificate_hash": "ccf5a402ca29339dd7adff5c410d73d57ea1c8a0"
+          }
+        },
+        {
+          "client_id": "299703011104-hldp4vkbcafocd0kl7u1oardj10qfi2v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-74ld3rX9foBOVav4Y1s_y7P82XFNNzQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299703011104-hldp4vkbcafocd0kl7u1oardj10qfi2v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
