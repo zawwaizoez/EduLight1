@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
@@ -37,10 +39,15 @@ public class PostUploadActivity extends AppCompatActivity {
     int postId =1;
     //for firebase
     private DatabaseReference mDatabase;
+    private StorageReference mImageStorage;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_upload);
+
+        //firebase
+        mImageStorage = FirebaseStorage.getInstance().getReference();
+
         boldFont = Typeface.createFromAsset(getAssets(), "oxygen.bold.ttf");
         thinFont = Typeface.createFromAsset(getAssets(),"oxygen.light.ttf");
         normalFont = Typeface.createFromAsset(getAssets(),"oxygen.regular.ttf");
