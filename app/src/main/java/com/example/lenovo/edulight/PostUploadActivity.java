@@ -15,6 +15,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+
 public class PostUploadActivity extends AppCompatActivity {
 
     private Toolbar activity_upload_toolbar;
@@ -24,7 +34,9 @@ public class PostUploadActivity extends AppCompatActivity {
     private ImageView activity_upload_user_post_image;
     private Typeface boldFont,normalFont,thinFont;
     private final int RESULT_LOAD_IMAGE = 1;
-
+    int postId =1;
+    //for firebase
+    private DatabaseReference mDatabase;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +49,28 @@ public class PostUploadActivity extends AppCompatActivity {
         imagePickUp();
     }
     private void imagePickUp() {
+
         activity_upload_user_post_image_btn = (Button)findViewById(R.id.activity_upload_user_post_image_btn);
         activity_upload_user_post_image_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                intent.setType("images/*");
-                startActivityForResult(intent,RESULT_LOAD_IMAGE);
+
+               /* Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intent.setType("images*//*");
+                startActivityForResult(intent,RESULT_LOAD_IMAGE);*/
+              String title =  activity_upload_user_post_title.getText().toString();
+             String description=   activity_upload_user_post_decription.getText().toString();
+
+                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                String userId = user2.getUid();
+
+                mDatabase =FirebaseDatabase.getInstance().getReference().child("Users").child(userId).child("POST"+postId );
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put("Title",title );
+                hashMap.put("Description",description);
+                hashMap.put("image","link_one");
+                mDatabase.setValue(hashMap);
+                postId++;
             }
         });
     }
